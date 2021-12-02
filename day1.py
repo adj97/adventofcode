@@ -12,7 +12,7 @@ for d in range(1,len(data)):
     if data[d]>data[d-1]:
         goes_up += 1
 
-# day 1
+# part 1
 #print(goes_up)
 
 sliding_windows = []
@@ -24,5 +24,5 @@ for i in range(1,len(sliding_windows)):
     if sliding_windows[i]>sliding_windows[i-1]:
         sw_goes_up += 1
 
-# day 2
+# part 2
 print(sw_goes_up)
