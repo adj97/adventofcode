@@ -6,22 +6,22 @@ lines = file1.readlines()
 for i,s in enumerate(lines):
     lines[i] = s.strip()
 
-# # init co-ords
-# h,d = 0,0
+# init co-ords
+h,d = 0,0
 
-# for line in lines:
-#     action = line.split()[0]
-#     amount = int(line.split()[1])
+for line in lines:
+    action = line.split()[0]
+    amount = int(line.split()[1])
 
-#     if action == "forward":
-#         h += amount
-#     elif action == "down":
-#         d += amount
-#     elif action == "up":
-#         d -= amount
+    if action == "forward":
+        h += amount
+    elif action == "down":
+        d += amount
+    elif action == "up":
+        d -= amount
 
-# # part 1
-# print(h*d)
+# part 1
+print(h*d)
 
 # init co-ords
 h,d, a = 0, 0, 0
