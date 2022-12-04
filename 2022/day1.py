@@ -10,4 +10,10 @@ for i in data:
 
 totals = [sum(cals) for cals in elves]
 
-print(max(totals))
+print('part 1:', max(totals))
+
+totals.sort()
+
+top3 = totals[-1] + totals[-2] + totals[-3]
+
+print('part 2:', top3)
