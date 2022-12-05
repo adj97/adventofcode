@@ -2,7 +2,7 @@ import numpy as np
 
 # process instructions
 file1 = open('day3data.txt', 'r')
-lines = file1.readlines()#[0:10]
+lines = file1.readlines()
 
 obits = [[],[],[],[],[],[],[],[],[],[],[],[]]
 
@@ -28,13 +28,13 @@ bits = [''.join([str(n[x]) for n in numbers]) for x in range(0,len(numbers[0]))]
 
 for i in range(0,len(bits[0])):
     numbers = [''.join([str(b[x]) for b in bits]) for x in range(0,len(bits[0]))]
-
-    count = [sum([b==x for b in bits[i]]) for x in [0,1]]
+    count = [sum([b==x for b in bits[i]]) for x in ["0","1"]]
     maxval = str(count.index(max(count)))
-    
-    numbers = [n for n in numbers if n[i] == maxval]
+    numbers = [n for n in numbers if n[i] == str(maxval)]
 
-    if len(numbers)==1: break
+    if len(numbers)==1: 
+        print(numbers)
+        break
 
     bits = [''.join([str(n[x]) for n in numbers]) for x in range(0,len(numbers[0]))]
 
@@ -46,19 +46,18 @@ oxygen = int(numbers[0],2)
 numbers = [''.join([str(n[x]) for n in obits]) for x in range(0,len(obits[0]))] # numbers from bits
 bits = [''.join([str(n[x]) for n in numbers]) for x in range(0,len(numbers[0]))] # bits from numbers
 
-print(len(numbers))
-print(len(bits))
-
 
 for i in range(0,len(bits[0])):
     numbers = [''.join([str(b[x]) for b in bits]) for x in range(0,len(bits[0]))]
 
-    count = [sum([b==x for b in bits[i]]) for x in [0,1]]
+    count = [sum([b==x for b in bits[i]]) for x in ["0","1"]]
     minval = str(count.index(min(count)))
     
     numbers = [n for n in numbers if n[i] == minval]
 
-    if len(numbers)==1: break
+    if len(numbers)==1:
+        print(numbers)
+        break
 
     bits = [''.join([str(n[x]) for n in numbers]) for x in range(0,len(numbers[0]))]
 
