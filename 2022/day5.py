@@ -39,7 +39,7 @@ for move in moves:
     to_keep = stacks[move.fromm][:len(stacks[move.fromm])-move.amount]
     to_move = stacks[move.fromm][-move.amount:]
     stacks[move.fromm] = to_keep
-    stacks[move.to] += to_move[::-1]
+    stacks[move.to] += to_move
     # for i, stack in enumerate(stacks):
     #     print(i, stack)
     # print()
