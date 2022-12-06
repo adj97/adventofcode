@@ -1,4 +1,4 @@
-with open('2022/data/day5_test.txt') as f:
+with open('2022/data/day5.txt') as f:
     lines = f.readlines()
     data = [lines[i].replace('\n', '') for i in range(9)] + [line.strip() for line in lines[9:]]
 
@@ -18,7 +18,7 @@ formation = data[:i]
 moves = [Move(d) for d in data[i+1:]]
 
 cols = []
-for i in range(len(formation)):
+for i in range(len(formation)-1):
     line = formation[i]
     cols.append([line[4*i+1] for i in range(9)])
 
@@ -29,14 +29,20 @@ for i, stack in enumerate(stacks):
 
 stacks = [[s for s in stack if s != ' '] for stack in stacks]
 
-for i, stack in enumerate(stacks):
-    print(i, stack)
+# for i, stack in enumerate(stacks):
+#     print(i, stack)
 
 for move in moves:
+    # print()
+    # print(move)
+    # print()
     to_keep = stacks[move.fromm][:len(stacks[move.fromm])-move.amount]
     to_move = stacks[move.fromm][-move.amount:]
     stacks[move.fromm] = to_keep
-    stacks[move.to] += to_move
+    stacks[move.to] += to_move[::-1]
+    # for i, stack in enumerate(stacks):
+    #     print(i, stack)
+    # print()
 
 
 
