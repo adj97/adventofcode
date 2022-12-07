@@ -2,7 +2,7 @@ from json import dumps
 from typing import List
 
 
-with open('2022/data/day7.txt') as f:
+with open('2022/data/day7_test.txt') as f:
     raw_input = f.read()
 
 class Command:
@@ -85,8 +85,6 @@ for command in commands:
         for output in command.outputs:
             item_to_add_to.children.append(Item(output['type'], output['name'], pwd, output.get('size')))
     if command.cmd == 'cd':
-        print('  start pwd ', pwd)
-        print('        arg ', command.args)
         if command.args == '..':
             pwd_parts = pwd.split('/')[1:-1]
             pwd_parts = pwd_parts[:-1]
@@ -96,8 +94,6 @@ for command in commands:
                 pwd = '/'
         else:
             pwd += command.args + '/'
-        print('updated pwd ', pwd)
-        print()
         if pwd == "/":
             item_to_add_to = tree
         else:
@@ -107,8 +103,22 @@ for command in commands:
                 item_to_add_to = [child for child in item_to_add_to.children if child.name == part][0]
 
 tree.calculate_size()
-walk_results = tree.walk()
+walk_results = [[tree.name, tree.size], *tree.walk()]
 
 small_dir_sum = sum([dir[1] for dir in walk_results if dir[1] < 100000])
 print('part1 ans:')
 print(small_dir_sum)
+print()
+
+total_disk_space = 70000000
+space_required_to_update = 30000000
+max_used_space = 40000000
+
+total_used_space = tree.size #sum([dir[1] for dir in walk_results])
+print('total used space', total_used_space)
+need_to_delete = total_used_space-max_used_space
+print('  need to delete', need_to_delete)
+
+print()
+
+print(walk_results)
