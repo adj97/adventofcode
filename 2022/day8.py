@@ -1,4 +1,4 @@
-with open('2022/data/day8_test.txt') as f:
+with open('2022/data/day8.txt') as f:
     raw_input = [line.strip() for line in f.readlines()]
 
 def printsummary(array):
@@ -19,12 +19,10 @@ class Tree:
         return str(1 if self.isvisible else 0)
 
 #printsummary(raw_input)
-for row in raw_input:
-    print(row)
+# for row in raw_input:
+#     print(row)
 
 gridsize = len(raw_input)
-
-print()
 
 treearray = [[Tree(char) for char in row] for row in raw_input]
 
@@ -60,9 +58,10 @@ for r, row in enumerate(treearray):
 visiblecount = 0 
 for row in treearray:
     rowsum = sum([tree.isvisible for tree in row])
-    print(row, rowsum)
     visiblecount += rowsum
-    
+
+visiblecount = sum([sum([tree.isvisible for tree in row]) for row in treearray])
+print('part1 ans:')
 print(visiblecount)
 
 
