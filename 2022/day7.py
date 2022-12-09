@@ -2,7 +2,7 @@ from json import dumps
 from typing import List
 
 
-with open('2022/data/day7_test.txt') as f:
+with open('2022/data/day7.txt') as f:
     raw_input = f.read()
 
 class Command:
@@ -121,4 +121,10 @@ print('  need to delete', need_to_delete)
 
 print()
 
-print(walk_results)
+big_enough_to_delete = ['none', 10000000000000000]
+for folder in walk_results:
+    if folder[1] > need_to_delete:
+        if folder[1] < big_enough_to_delete[1]:
+            big_enough_to_delete = folder
+
+print(big_enough_to_delete)
