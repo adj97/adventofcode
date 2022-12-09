@@ -1,4 +1,4 @@
-with open('2022/data/day8_test.txt') as f:
+with open('2022/data/day8.txt') as f:
     raw_input = [line.strip() for line in f.readlines()]
 
 def printsummary(array):
